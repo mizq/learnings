@@ -2,6 +2,8 @@ package com.udemy.model;
 
 public class Person {
 
+	
+
 	private String name;
 	private String age;
 
@@ -28,4 +30,9 @@ public class Person {
 	}
 		
 	public Person(){}
+	
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
 }
