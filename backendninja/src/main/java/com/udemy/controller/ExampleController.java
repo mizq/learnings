@@ -1,8 +1,5 @@
 package com.udemy.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,13 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.udemy.component.ExampleComponent;
-import com.udemy.model.Person;
+import com.udemy.service.ExampleService;
 
 @Controller
 @RequestMapping("/example")
 public class ExampleController {
 
 	public static final String EXAMPLE_VIEW = "example";
+	
+	@Autowired
+	@Qualifier( "exampleService" )
+	private ExampleService exampleService;
 
 	@Autowired
 	@Qualifier( "exampleComponent" )
@@ -32,7 +33,7 @@ public class ExampleController {
 		
 		exampleComponent.sayHello();
 		
-		model.addAttribute("people", getPeople() );
+		model.addAttribute("people", exampleService.getListPeople() );
 		return EXAMPLE_VIEW;
 	}
 
@@ -40,20 +41,9 @@ public class ExampleController {
 	@GetMapping("/exampleMAV")
 	public ModelAndView exampleMAV() {
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("people", getPeople() );
+		mav.addObject("people", exampleService.getListPeople() );
 		// return new ModelAndView( EXAMPLE_VIEW );
 		return mav;
-	}
-
-	private List<Person> getPeople() {
-
-		List<Person> people = new ArrayList<>();
-		people.add(new Person("Moto", "23"));
-		people.add(new Person("GT Calor", "30"));
-		people.add(new Person("Tato", "25"));
-		people.add(new Person("Piter", "40"));
-
-		return people;
 	}
 
 }
