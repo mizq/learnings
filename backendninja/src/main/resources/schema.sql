@@ -1,0 +1,9 @@
+CREATE TABLE course (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(150) NULL,
+	description VARCHAR(300) NULL,
+	price INT NULL,
+	hours INT NULL,
+	PRIMARY KEY (id)
+)
+;

@@ -1,11 +1,18 @@
 package com.udemy.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Person {
 
 	
-
+    @NotNull
+    @Size(min=2, max=6)
 	private String name;
-	private String age;
+	@NotNull
+	@Min(18)
+    private String age;
 
 	public String getName() {
 		return name;
