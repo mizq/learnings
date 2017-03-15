@@ -24,7 +24,7 @@
 		</tbody>
 	</table>
 	
-	<form action="#" th:action="@(/courses/addcourse)" th:object="${course}" method="post">
+	<form action="#" th:action="@{/courses/addcourse}" th:object="${course}" method="post">
 		<p>Name: <input type="text" th:field="*{name}"/></p>
 		<p>Description: <input type="text" th:field="*{description}"/></p>
 		<p>Price: <input type="number" th:field="*{price}"/></p>
