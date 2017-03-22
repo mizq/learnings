@@ -34,6 +34,4 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter{
 	}
 
 	
-	
-	
 }

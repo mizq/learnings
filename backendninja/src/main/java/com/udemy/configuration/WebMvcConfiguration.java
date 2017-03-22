@@ -21,7 +21,5 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addInterceptor(requestTimeInterceptor);
 		
 	}
-
-	
 	
 }
