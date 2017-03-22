@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.udemy.converter.CourseConverter;
 import com.udemy.entity.Course;
+import com.udemy.model.CourseModel;
 import com.udemy.repository.CourseJpaRepository;
 import com.udemy.service.CourseService;
 
@@ -21,6 +23,9 @@ public class CourseServiceImpl implements CourseService{
 	@Qualifier( "courseJpaRepository" )
 	private CourseJpaRepository courseJpaRepository;
 	
+	@Autowired
+	@Qualifier( "courseConverter" )
+	private CourseConverter courseConverter;
 	
 	@Override
 	public List<Course> listAllCourses() {

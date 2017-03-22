@@ -11,20 +11,21 @@
 				<th>Name - </th>
 				<th>Description - </th>
 				<th>Benji Price - </th>
-				<th>Hours</th>
+				<th>Hours - </th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="course : ${courses}">
-				<th><span th:text="${course.name}"></span></th>
-				<th><span th:text="${course.description}"></span></th>
-				<th><span th:text="${course.price}"></span></th>
-				<th><span th:text="${course.hours}"></span></th>
+			<tr th:each="coursemodel : ${courses}">
+				<th><span th:text="${coursemodel.name}"></span></th>
+				<th><span th:text="${coursemodel.description}"></span></th>
+				<th><span th:text="${coursemodel.price}"></span></th>
+				<th><span th:text="${coursemodel.hours}"></span></th>
 			</tr>
 		</tbody>
 	</table>
 	
-	<form action="#" th:action="@{/courses/addcourse}" th:object="${course}" method="post">
+	<form action="#" th:action="@{/courses/addcourse}" th:object="${coursemodel}" method="post">
 		<p>Name: <input type="text" th:field="*{name}"/></p>
 		<p>Description: <input type="text" th:field="*{description}"/></p>
 		<p>Price: <input type="number" th:field="*{price}"/></p>
