@@ -4,6 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.udemy.constant.ViewConstant;
-import com.udemy.entity.Contact;
 import com.udemy.model.ContactModel;
 import com.udemy.service.ContactService;
 
@@ -35,6 +36,7 @@ public class ContactController {
 		return "redirect:/contacts/showcontacts";
 	}
 	
+	// @PreAuthorize( "hasRole( 'ROLE_USER' )")
 	@GetMapping( "/contactform" )
 	public String redirectContactForm( @RequestParam( name="id", required=false ) Long id, Model model ){
 		
@@ -51,7 +53,11 @@ public class ContactController {
 	@GetMapping( "/showcontacts" )
 	public ModelAndView showContacts(){
 		
+		User user = ( User )SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		
 		ModelAndView mav = new ModelAndView( ViewConstant.CONTACTS );
+		mav.addObject( "username", user.getUsername() );
 		mav.addObject("contacts", contactService.listAllContacts() );
 		return mav;
 	}
