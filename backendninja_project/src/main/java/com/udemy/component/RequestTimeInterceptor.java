@@ -51,7 +51,6 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter{
 			username = auth.getName();
 		}
 			
-		
 		com.udemy.entity.Log log = new com.udemy.entity.Log( new Date(), auth.getDetails().toString(), username, url );
 		logRepository.save( log );
 	}

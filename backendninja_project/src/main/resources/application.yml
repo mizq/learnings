@@ -23,4 +23,7 @@ spring:
     console:
       enabled: true
       path: /console
+  thymeleaf:
+    cache: false
+
 

@@ -15,7 +15,7 @@ public class BackendninjaRestController {
 	@GetMapping( "/checkrest" )
 	public ResponseEntity<ContactModel> checkRest(){
 		
-		ContactModel contactModel = new ContactModel( Long.getLong("2"), "Mikel", "Perez", "987654321", "Madrid" ); 
+		ContactModel contactModel = new ContactModel( new Long(2), "Mikel", "Perez", "987654321", "Madrid" ); 
 		return new ResponseEntity<ContactModel>( contactModel , HttpStatus.OK );
 	}
 	
