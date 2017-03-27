@@ -25,5 +25,3 @@ spring:
       path: /console
   thymeleaf:
     cache: false
-
-
